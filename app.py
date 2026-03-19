@@ -1,9 +1,17 @@
-import streamlit as st
-import pandas as pd
-import plotly.express as px
+import sys
+import os
 
-from utils.preprocess import preprocess_input
-from utils.predict import load_models, make_prediction
+# Add utils folder to path so Python can find modules on Streamlit Cloud
+sys.path.append(os.path.join(os.path.dirname(__file__), "utils"))
+
+# Now you can import from your utils folder
+from preprocess import clean_data, feature_engineering  # if you have these functions
+from predict import load_models, make_prediction
+from dashboard import plot_churn_by_contract, plot_monthly_charges  # example functions
+
+# Other standard imports
+import pandas as pd
+import streamlit as st
 
 st.set_page_config(
     page_title="Customer Churn Intelligence",
